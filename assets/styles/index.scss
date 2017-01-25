@@ -3,9 +3,11 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 body {
  text-align: center;
+ background: black;
 }
 
 h1 {
+  color: red;
   font-size: 25px;
   text-align: center;
 }
@@ -39,12 +41,13 @@ label {
   padding: 50px 100px;
 }
 
+
+
 .col-xs-4 {
-  border: 1px solid #000;
+  border: 5px solid red;
   height: 60px;
   padding: 60px;
   width: 60px;
-
 }
 
 .row2 {
