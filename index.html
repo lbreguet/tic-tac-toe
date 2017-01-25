@@ -1,98 +1,147 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Tic Tac Toe</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags unless you know what you are doing -->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<head>
+  <title>Tic Tac Toe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `script` tags unless you know what you are doing -->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body class="container-fluid">
-      <header>Tic Tac Toe</header>
-      <div class="sign-in functions">
-        <form id="sign-up">
+  <!-- Do not add `link` tags unless you know what you are doing -->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags unless you know what you are doing -->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body class="container-fluid">
+  <h1>Tic Tac Toe</h1>
+
+  <!-- Single button -->
+
+  <nav class="">
+    <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sign Up <span class="caret"></span>
+      </button>
+      <div class="dropdown-menu">
+        <form class="auth" id="sign-up">
           <fieldset>
-            <legend>Sign up!</legend>
             <label class="email">
-              Email
+                  Email
+                  <input type="text" name="credentials[email]">
+                </label>
+
+            <label class="password">
+                  Password
+                  <input type="password" name="credentials[password]">
+                </label>
+
+            <label class="password_confirmation">
+                  Password Confirmation
+                  <input type="password" name="credentials[password_confirmation]">
+                </label>
+            <input type="submit" name="submit" value="Sign up!">
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sign In <span class="caret"></span>
+      </button>
+      <div class="dropdown-menu">
+        <form class="auth" id="sign-in">
+          <fieldset>
+            <label class="email">
+                Email
               <input type="text" name="credentials[email]">
             </label>
 
             <label class="password">
+                Password
+              <input type="password" name="credentials[password]">
+            </label>
+            <input type="submit" name="submit" value="Sign in!">
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+
+  <!-- <nav class="my-form">
+    <form class="auth" id="sign-up">
+      <fieldset>
+        <legend>Sign up!</legend>
+        <label class="email">
+              Email
+              <input type="text" name="credentials[email]">
+            </label>
+
+        <label class="password">
               Password
               <input type="password" name="credentials[password]">
             </label>
 
-            <label class="password_confirmation">
+        <label class="password_confirmation">
               Password Confirmation
               <input type="password" name="credentials[password_confirmation]">
             </label>
 
-            <input type="submit" name="submit" value="Sign up!">
-          </fieldset>
-        </form>
+        <input type="submit" name="submit" value="Sign up!">
+      </fieldset>
+    </form> -->
 
-        <form id="sign-in">
-          <fieldset>
-            <legend>Sign in!</legend>
-            <label class="email">
-              Email
-              <input type="text" name="credentials[email]">
-            </label>
-
-            <label class="password">
-              Password
-              <input type="password" name="credentials[password]">
-            </label>
-
-            <input type="submit" name="submit" value="Sign in!">
-          </fieldset>
-        </form>
-
+    <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Change Password <span class="caret"></span>
+      </button>
+      <div class="dropdown-menu">
         <form id="change-password">
           <fieldset>
             <legend>Change Password!</legend>
             <label class="old">
-              Old password
-              <input type="password" name="passwords[old]">
-            </label>
+                  Old password
+                  <input type="password" name="passwords[old]">
+                </label>
 
             <label class="new">
-              New password
-              <input type="password" name="passwords[new]">
-            </label>
+                  New password
+                  <input type="password" name="passwords[new]">
+                </label>
 
             <input type="submit" name="submit" value="Change password!">
           </fieldset>
         </form>
+      </div>
+    </div>
+    <div class="btn-group" role="group" aria-label="...">
+      <form id="sign-out">
+        <button type="button" class="btn btn-default">Sign Out</button>
+      </form>
+    </div>
+  </nav>
 
-        <form id="sign-out">
-          <fieldset>
-            <legend>Sign Out!</legend>
-            <input type="submit" name="submit" value="Sign Out!">
-          </fieldset>
-        </form>
-      </div>
-      <div class="game-board">
-        <div class="row">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <div class="row">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <div class="row">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
-    </body>
+  <div class="btn-group" role="group" aria-label="...">
+    <button type="button" class="btn btn-default">Start a New Game</button>
+  </div>
+
+  <div class="container">
+    <div class="row1">
+      <div class="col-xs-4 upper-left"></div>
+      <div class="col-xs-4 upper-middle"></div>
+      <div class="col-xs-4 upper-right"></div>
+    </div>
+    <div class="row2">
+      <div class="col-xs-4 left"></div>
+      <div class="col-xs-4 middle"></div>
+      <div class="col-xs-4 right"></div>
+    </div>
+    <div class="row3">
+      <div class="col-xs-4 bottom-left"></div>
+      <div class="col-xs-4 bottom-middle"></div>
+      <div class="col-xs-4 bottom-right"></div>
+    </div>
+  </div>
+</body>
+
 </html>

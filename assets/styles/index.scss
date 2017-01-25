@@ -1,2 +1,91 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+body {
+ text-align: center;
+}
+
+h1 {
+  font-size: 25px;
+  text-align: center;
+}
+
+legend {
+  font-size: 17px;
+}
+
+
+label {
+  font-size: 10px;
+  float: left;
+}
+
+
+.password {
+  clear: both;
+}
+
+.password_confirmation {
+  clear: both;
+}
+
+.new {
+  clear: both;
+}
+
+
+.container {
+  clear: both;
+  padding: 50px 100px;
+}
+
+.col-xs-4 {
+  border: 1px solid #000;
+  height: 60px;
+  padding: 60px;
+  width: 60px;
+
+}
+
+.row2 {
+  clear: both;
+}
+
+.row3 {
+  clear: both;
+}
+
+.upper-left {
+  border-style-top: none;
+  border-style-left: none;
+}
+
+.upper-middle {
+  border-style-top: none;
+}
+.upper-right {
+  border-style-top: none;
+  border-style-right: none;
+}
+
+.left {
+  border-style-left: none;
+}
+
+.right {
+  border-style-right: none;
+}
+
+.bottom-left {
+  border-style-bottom: none;
+  border-style-left: none;
+}
+
+.bottom-middle {
+  border-style-bottom: none;
+}
+
+.bottom-right {
+  border-style-bottom: none;
+  border-style-right: none;
+}
