@@ -6,60 +6,70 @@ let board = [
   '','',''
 ];
 
-const player1 = 'X';
-const player2 = 'O';
+// let player1 = 'X';
+// let player2 = 'O';
 
-let currentPlayer = player1;
-let turn = 0;
-
-
+let currentPlayer = 'X';
 
 const checkWins = function () {
-  if (board[0] === player1 && board[1] === player1 && board[2] === player1 ||
-  board[3] === player1 && board[4] === player1 && board[5] === player1 ||
-  board[6] === player1 && board[7] === player1 && board[8] === player1 ||
-  board[0] === player1 && board[4] === player1 && board[8] === player1 ||
-  board[2] === player1 && board[4] === player1 && board[6] === player1 ||
-  board[0] === player1 && board[3] === player1 && board[6] === player1 ||
-  board[1] === player1 && board[4] === player1 && board[7] === player1 ||
-  board[2] === player1 && board[5] === player1 && board[8] === player1) {
+  if (board[0] === 'X' && board[1] === 'X' && board[2] === 'X' ||
+  board[3] === 'X' && board[4] === 'X' && board[5] === 'X' ||
+  board[6] === 'X' && board[7] === 'X' && board[8] === 'X' ||
+  board[0] === 'X' && board[4] === 'X' && board[8] === 'X' ||
+  board[2] === 'X' && board[4] === 'X' && board[6] === 'X' ||
+  board[0] === 'X' && board[3] === 'X' && board[6] === 'X' ||
+  board[1] === 'X' && board[4] === 'X' && board[7] === 'X' ||
+  board[2] === 'X' && board[5] === 'X' && board[8] === 'X') {
     $('.win').text('Player 1 is the Winner!');
-  } else if (board[0] === player2 && board[1] === player2 && board[2] === player2 ||
-  board[3] === player2 && board[4] === player2 && board[5] === player2 ||
-  board[6] === player2 && board[7] === player2 && board[8] === player2 ||
-  board[0] === player2 && board[4] === player2 && board[8] === player2 ||
-  board[2] === player2 && board[4] === player2 && board[6] === player2 ||
-  board[0] === player2 && board[3] === player2 && board[6] === player2 ||
-  board[1] === player2 && board[4] === player2 && board[7] === player2 ||
-  board[2] === player2 && board[5] === player2 && board[8] === player2) {
+  } else if (board[0] === 'O' && board[1] === 'O' && board[2] === 'O' ||
+  board[3] === 'O' && board[4] === 'O' && board[5] === 'O' ||
+  board[6] === 'O' && board[7] === 'O' && board[8] === 'O' ||
+  board[0] === 'O' && board[4] === 'O' && board[8] === 'O' ||
+  board[2] === 'O' && board[4] === 'O' && board[6] === 'O' ||
+  board[0] === 'O' && board[3] === 'O' && board[6] === 'O' ||
+  board[1] === 'O' && board[4] === 'O' && board[7] === 'O' ||
+  board[2] === 'O' && board[5] === 'O' && board[8] === 'O') {
     $('.win').text('Player 2 is the Winner!');
-  // } else {
-  //   $('.win').text('Cats Game!');
+  } else if (board.include('') === false){
+    $('.win').text('Cats Game!');
+    console.log('Cats Game!');
   }
 };
 
 const turns = function(index) {
   if (board[index] === '') {
-    if ( currentPlayer === player1) {
-      board[index] = currentPlayer;
-      currentPlayer = player2;
-    } else {
-      board[index] = currentPlayer;
-      currentPlayer = player1;
+    board[index] = currentPlayer;
+    checkWins();
+    if (currentPlayer === 'X') {
+      currentPlayer = 'O';
+    } else if (currentPlayer === 'O'){
+      currentPlayer = 'X';
     }
   } else {
-    console.log('Has been filled!');
+    console.log('Error');
   }
 };
 
-const resetGame = function () {
-  board = [
-    '','','',
-    '','','',
-    '','',''
-  ];
-};
+$('.box').on('click', function(event) {
+  if ($(event.target).text() === '') {
+    $(event.target).text(currentPlayer);
+  } turns(event.target.id);
+  console.log(board);
+});
 
+const resetGame = function () {
+  for (let i = 0; i < board.length; i++) {
+    board[i] = '';
+    $('.box').text('');
+    $('.win').text('');
+    currentPlayer = 'X';
+  } $('.box').on('click', function(event) {
+    if ($(event.target).text() === '') {
+      $(event.target).text(currentPlayer);
+    } turns(event.target.id);
+    console.log(board);
+  });
+};
 
 module.exports = {
   checkWins,
