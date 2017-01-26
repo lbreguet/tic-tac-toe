@@ -14,23 +14,19 @@ const resetGameBoard = function() {
     board[i] = '';
     $('.box').text('');
     $('.win').text('');
-    currentPlayer = 'X';
-
-
+    currentPlayer = player1;
   }
   $('.box').on('click', function(event) {
     if ($(event.target).text() === '') {
       $(event.target).text(currentPlayer);
     } turns(event.target.id);
     console.log(board);
-
   });
 };
 
 
-
- $('#new-game').on('submit', function() {
-   resetGameBoard();
+$('#new-game').on('click', function() {
+  resetGameBoard();
 });
 
 const checkWins = function() {
@@ -67,23 +63,22 @@ const checkWins = function() {
   }
 };
 
-
+let message = "Cell is already taken! Pick another one!";
 
 // let count = 0;
 let turns = function(index) {
   if (board[index] === '') {
     board[index] = currentPlayer;
     checkWins();
-    if (currentPlayer === "X") {
-      currentPlayer = "O";
+    if (currentPlayer === player1) {
+      currentPlayer = player2;
+      // checkWins();
+    } else if (currentPlayer === player2){
+      currentPlayer = player1;
       // checkWins();
     } else {
-      currentPlayer = "X";
-      // checkWins();
+      $('.win').text(message);
     }
-  } else {
-    console.log("Error");
-    $('.win').text("Cell is already taken! Pick another one!");
   }
 };
 
