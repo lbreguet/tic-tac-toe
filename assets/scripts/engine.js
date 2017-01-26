@@ -1,81 +1,60 @@
 'use strict';
 
-  const gameBoard = [
-    '','','',
-    '','','',
-    '','',''
-  ];
+const board = [
+  '','','',
+  '','','',
+  '','',''
+];
 
-  const x = 'X';
-  const o = 'O';
+const player1 = 'x';
+const player2 = 'o';
+
+let currentPlayer = player1;
+
+const turns = function() {
+  if (currentPlayer === player1) {
+    currentPlayer = player2;
+  } else if (currentPlayer === player2) {
+    currentPlayer = player1;
+  } else {
+    return currentPlayer;
+  }
+};
+
+const checkWins = function () {
+  if (board[0] === player1 && board[1] === player1 && board[2] === player1 ||
+  board[3] === player1 && board[4] === player1 && board[5] === player1 ||
+  board[6] === player1 && board[7] === player1 && board[8] === player1 ||
+  board[0] === player1 && board[4] === player1 && board[8] === player1 ||
+  board[2] === player1 && board[4] === player1 && board[6] === player1 ||
+  board[0] === player1 && board[3] === player1 && board[6] === player1 ||
+  board[1] === player1 && board[4] === player1 && board[7] === player1 ||
+  board[2] === player1 && board[5] === player1 && board[8] === player1) {
+    $('.win').text('Player 1 is the Winner!');
+  } else if (board[0] === player1 && board[1] === player1 && board[2] === player2 ||
+  board[3] === player2 && board[4] === player2 && board[5] === player2 ||
+  board[6] === player2 && board[7] === player2 && board[8] === player2 ||
+  board[0] === player2 && board[4] === player2 && board[8] === player2 ||
+  board[2] === player2 && board[4] === player2 && board[6] === player2 ||
+  board[0] === player2 && board[3] === player2 && board[6] === player2 ||
+  board[1] === player2 && board[4] === player2 && board[7] === player2 ||
+  board[2] === player2 && board[5] === player2 && board[8] === player2) {
+    $('.win').text('Player 2 is the Winner!');
+  } else {
+    $('.win').text('Cats Game!');
+  }
+};
+
+const gameBoard = $('#board').append(board);
 
 
-  const turn = function () {
-    let currentPlayer = x;
-    if (currentPlayer === x) {
-      currentPlayer = o;
-    } else {
-      currentPlayer = x;
-    } return currentPlayer;
-  };
 
-  const play = function () {
-    for (let i = 0; i < gameBoard.length; i++) {
-      if (gameBoard[0] === x && gameBoard[1] === x && gameBoard[2] === x) {
-        console.log('X wins, O loses!');
-      } else if (gameBoard[0] === x && gameBoard[4] === x && gameBoard[8] === x) {
-        console.log('X wins, O loses!');
-      } else if (gameBoard[3] === x && gameBoard[4] === x && gameBoard[5] === x) {
-        console.log('X wins, O loses!');
-      } else if (gameBoard[1] === x && gameBoard[4] === x && gameBoard[7] === x) {
-        console.log('X wins, O loses!');
-      } else if (gameBoard[2] === x && gameBoard[4] === x && gameBoard[6] === x) {
-        console.log('X wins, O loses!');
-      } else if (gameBoard[0] === x && gameBoard[3] === x && gameBoard[6] === x) {
-        console.log('X wins, O loses!');
-      } else if (gameBoard[6] === x && gameBoard[7] === x && gameBoard[8] === x) {
-        console.log('X wins, O loses!');
-      } else if (gameBoard[2] === o && gameBoard[5] === o && gameBoard[8] === o) {
-        console.log('O wins, X loses!');
-      } else if (gameBoard[0] === o && gameBoard[1] === o && gameBoard[2] === o) {
-        console.log('O wins, X loses!');
-      } else if (gameBoard[0] === o && gameBoard[4] === o && gameBoard[8] === o) {
-        console.log('O wins, X loses!');
-      } else if (gameBoard[3] === o && gameBoard[4] === o && gameBoard[5] === o) {
-        console.log('O wins, X loses!');
-      } else if (gameBoard[1] === o && gameBoard[4] === o && gameBoard[7] === o) {
-        console.log('O wins, X loses!');
-      } else if (gameBoard[2] === o && gameBoard[4] === o && gameBoard[6] === o) {
-        console.log('O wins, X loses!');
-      } else if (gameBoard[0] === o && gameBoard[3] === o && gameBoard[6] === o) {
-        console.log('O wins, X loses!');
-      } else if (gameBoard[6] === o && gameBoard[7] === o && gameBoard[8] === o) {
-        console.log('O wins, X loses!');
-      } else if (gameBoard[2] === o && gameBoard[5] === o && gameBoard[8] === o) {
-        console.log('O wins, X loses!');
-      } else {
-        console.log('Tie Game!');
-      }
-    } return play;
-  };
 
-  const newGame = function () {
-    if (play === 'O wins, X loses!' || 'X wins, O loses!' || 'Tie Game!') {
-      return gameBoard;
-    } else {
-      return turn;
-    }
-  };
-
-  const documentReady = $(document).ready(function() {
-    $('#board .col-xs-4').append(gameBoard);
-    $('.col-xs-4').click(function() {
-
-    })
-  });
 
 module.exports = {
-  documentReady,
+  checkWins,
+  board,
   gameBoard,
-  turn,
+  currentPlayer,
+  turns,
 };

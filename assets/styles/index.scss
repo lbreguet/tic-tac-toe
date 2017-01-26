@@ -3,7 +3,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 body {
  text-align: center;
- background: black;
+ background: white;
 }
 
 h1 {
@@ -44,6 +44,7 @@ label {
 
 
 .col-xs-4 {
+  font-size: 50px;
   border: 5px solid red;
   height: 60px;
   padding: 60px;
