@@ -6,73 +6,75 @@ const game = require('./engine');
 
 $(() => {
   setAPIOrigin(location, config);
-  game.gameBoard;
+  $('#board').prepend(game.board);
+  game.turns();
   $('#1').on('click', function() {
     if ($('#1').html() === '') {
-      $('#1').html(game.currentPlayer);
+      $('#1').text(game.turns);
     } else {
       console.log('Error');
     }
   });
   $('#2').on('click', function() {
     if ($('#2').html() === '') {
-      $('#2').html(game.currentPlayer);
+      $('#2').text(game.turns);
     } else {
       console.log('Error');
     }
   });
   $('#3').on('click', function() {
     if ($('#3').html() === '') {
-      $('#3').html(game.currentPlayer);
+      $('#3').text(game.turns);
     } else {
       console.log('Error');
     }
   });
   $('#4').on('click', function() {
     if ($('#4').html() === '') {
-      $('#4').html(game.currentPlayer);
+      $('#4').text(game.turns);
     } else {
       console.log('Error');
     }
   });
   $('#5').on('click', function() {
     if ($('#5').html() === '') {
-      $('#5').html(game.currentPlayer);
+      $('#5').text(game.turns);
     } else {
       console.log('Error');
     }
   });
   $('#6').on('click', function() {
     if ($('#6').html() === '') {
-      $('#6').html(game.currentPlayer);
+      $('#6').text(game.turns);
     } else {
       console.log('Error');
     }
   });
   $('#7').on('click', function() {
     if ($('#7').html() === '') {
-      $('#7').html(game.currentPlayer);
+      $('#7').text(game.turns);
     } else {
       console.log('Error');
     }
   });
   $('#8').on('click', function() {
     if ($('#8').html() === '') {
-      $('#8').html(game.currentPlayer);
+      $('#8').text(game.turns);
     } else {
       console.log('Error');
     }
   });
   $('#9').on('click', function() {
     if ($('#9').html() === '') {
-      $('#9').html(game.currentPlayer);
+      $('#9').text(game.turns);
     } else {
       console.log('Error');
     }
   });
   $('#new-game').on('click', function() {
-    $('.col-xs-4').text('');
-  })
+    $('#board').append(game.resetGame());
+  });
+  game.checkWins();
 });
 
 // use require with a reference to bundle the file and use it in this file

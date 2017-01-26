@@ -1,25 +1,18 @@
 'use strict';
 
-const board = [
+let board = [
   '','','',
   '','','',
   '','',''
 ];
 
-const player1 = 'x';
-const player2 = 'o';
+const player1 = 'X';
+const player2 = 'O';
 
 let currentPlayer = player1;
+let turn = 0;
 
-const turns = function() {
-  if (currentPlayer === player1) {
-    currentPlayer = player2;
-  } else if (currentPlayer === player2) {
-    currentPlayer = player1;
-  } else {
-    return currentPlayer;
-  }
-};
+
 
 const checkWins = function () {
   if (board[0] === player1 && board[1] === player1 && board[2] === player1 ||
@@ -31,7 +24,7 @@ const checkWins = function () {
   board[1] === player1 && board[4] === player1 && board[7] === player1 ||
   board[2] === player1 && board[5] === player1 && board[8] === player1) {
     $('.win').text('Player 1 is the Winner!');
-  } else if (board[0] === player1 && board[1] === player1 && board[2] === player2 ||
+  } else if (board[0] === player2 && board[1] === player2 && board[2] === player2 ||
   board[3] === player2 && board[4] === player2 && board[5] === player2 ||
   board[6] === player2 && board[7] === player2 && board[8] === player2 ||
   board[0] === player2 && board[4] === player2 && board[8] === player2 ||
@@ -45,16 +38,33 @@ const checkWins = function () {
   }
 };
 
-const gameBoard = $('#board').append(board);
+const turns = function(index) {
+  if (board[index] === '') {
+    if ( currentPlayer === player1) {
+      board[index] = currentPlayer;
+      currentPlayer = player2;
+    } else {
+      board[index] = currentPlayer;
+      currentPlayer = player1;
+    }
+  } else {
+    console.log('Has been filled!');
+  }
+};
 
-
-
+const resetGame = function () {
+  board = [
+    '','','',
+    '','','',
+    '','',''
+  ];
+};
 
 
 module.exports = {
   checkWins,
   board,
-  gameBoard,
   currentPlayer,
   turns,
+  resetGame
 };
