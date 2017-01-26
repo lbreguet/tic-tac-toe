@@ -2,8 +2,8 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
 body {
- text-align: center;
  background: white;
+ text-align: center;
 }
 
 h1 {
@@ -35,61 +35,58 @@ label {
   clear: both;
 }
 
-
 .container {
-  clear: both;
-  padding: 50px 100px;
+  background: #fff;
+  display: block;
+  height: 400px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  width: 400px;
 }
 
-
-
-.col-xs-4 {
-  font-size: 50px;
-  border: 5px solid red;
-  height: 60px;
-  padding: 60px;
-  width: 60px;
+.row {
+  border-top: 5px solid #000;
+  display: block;
+  height: 33.3%;
 }
 
-.row2 {
-  clear: both;
+.row:first-child {
+  border-top: 0;
 }
 
-.row3 {
-  clear: both;
+.box {
+  color: #000;
+  border-left: 5px solid #000;
+  display: block;
+  float: left;
+  height: 100%;
+  text-align: center;
+  width: 33.3%;
 }
 
-.upper-left {
-  border-style-top: none;
-  border-style-left: none;
+.box {
+  content: '';
+  font-size: 5em;
+  line-height: 0;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.upper-middle {
-  border-style-top: none;
-}
-.upper-right {
-  border-style-top: none;
-  border-style-right: none;
+.box:hover {
+  background-color: #808080;
 }
 
-.left {
-  border-style-left: none;
+.box:first-child {
+  border-left: 0;
 }
 
-.right {
-  border-style-right: none;
+.box-x {
+  content: 'X';
 }
 
-.bottom-left {
-  border-style-bottom: none;
-  border-style-left: none;
-}
-
-.bottom-middle {
-  border-style-bottom: none;
-}
-
-.bottom-right {
-  border-style-bottom: none;
-  border-style-right: none;
+.box-o {
+  content: 'O';
 }

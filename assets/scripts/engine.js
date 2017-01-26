@@ -1,70 +1,45 @@
 'use strict';
 
-let board = [
-  '','','',
-  '','','',
-  '','',''
-];
-
-const player1 = 'X';
-const player2 = 'O';
-
-let currentPlayer = player1;
 let turn = 0;
 
+let winCombos = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6]
+];
 
+let currentPlayer = 'X';
 
-const checkWins = function () {
-  if (board[0] === player1 && board[1] === player1 && board[2] === player1 ||
-  board[3] === player1 && board[4] === player1 && board[5] === player1 ||
-  board[6] === player1 && board[7] === player1 && board[8] === player1 ||
-  board[0] === player1 && board[4] === player1 && board[8] === player1 ||
-  board[2] === player1 && board[4] === player1 && board[6] === player1 ||
-  board[0] === player1 && board[3] === player1 && board[6] === player1 ||
-  board[1] === player1 && board[4] === player1 && board[7] === player1 ||
-  board[2] === player1 && board[5] === player1 && board[8] === player1) {
-    $('.win').text('Player 1 is the Winner!');
-  } else if (board[0] === player2 && board[1] === player2 && board[2] === player2 ||
-  board[3] === player2 && board[4] === player2 && board[5] === player2 ||
-  board[6] === player2 && board[7] === player2 && board[8] === player2 ||
-  board[0] === player2 && board[4] === player2 && board[8] === player2 ||
-  board[2] === player2 && board[4] === player2 && board[6] === player2 ||
-  board[0] === player2 && board[3] === player2 && board[6] === player2 ||
-  board[1] === player2 && board[4] === player2 && board[7] === player2 ||
-  board[2] === player2 && board[5] === player2 && board[8] === player2) {
-    $('.win').text('Player 2 is the Winner!');
-  } else {
-    $('.win').text('Cats Game!');
-  }
+let players = {
+  'X': [],
+  'O': []
 };
 
-const turns = function(index) {
-  if (board[index] === '') {
-    if ( currentPlayer === player1) {
-      board[index] = currentPlayer;
-      currentPlayer = player2;
-    } else {
-      board[index] = currentPlayer;
-      currentPlayer = player1;
+$('.container').on('click', ".box:not('.box-X, .box-O')", function(event) {
+  let $box = $(event.currentTarget);
+  $box.addClass('box-' + currentPlayer);
+  let indexBox = $('.container .box').index($box);
+  let currentBox = players[currentPlayer];
+  currentBox.push(indexBox);
+  $.each(winCombos, function(index, combination) {
+    let allBoxes = true;
+    $.each(combination, function(index, box) {
+      if($.inArray(box, currentBox) === -1) {
+        allBoxes = false;
+      }
+    });
+    if (allBoxes) {
+      console.log(currentPlayer + 'wins!');
     }
+  });
+  if (currentPlayer === 'X') {
+    currentPlayer = 'O';
   } else {
-    console.log('Has been filled!');
+    currentPlayer = 'X';
   }
-};
-
-const resetGame = function () {
-  board = [
-    '','','',
-    '','','',
-    '','',''
-  ];
-};
-
-
-module.exports = {
-  checkWins,
-  board,
-  currentPlayer,
-  turns,
-  resetGame
-};
+});

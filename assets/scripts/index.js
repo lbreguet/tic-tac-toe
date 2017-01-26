@@ -2,79 +2,11 @@
 
 const setAPIOrigin = require('../../lib/set-api-origin');
 const config = require('./config');
-const game = require('./engine');
+
 
 $(() => {
   setAPIOrigin(location, config);
-  $('#board').prepend(game.board);
-  game.turns();
-  $('#1').on('click', function() {
-    if ($('#1').html() === '') {
-      $('#1').text(game.turns);
-    } else {
-      console.log('Error');
-    }
-  });
-  $('#2').on('click', function() {
-    if ($('#2').html() === '') {
-      $('#2').text(game.turns);
-    } else {
-      console.log('Error');
-    }
-  });
-  $('#3').on('click', function() {
-    if ($('#3').html() === '') {
-      $('#3').text(game.turns);
-    } else {
-      console.log('Error');
-    }
-  });
-  $('#4').on('click', function() {
-    if ($('#4').html() === '') {
-      $('#4').text(game.turns);
-    } else {
-      console.log('Error');
-    }
-  });
-  $('#5').on('click', function() {
-    if ($('#5').html() === '') {
-      $('#5').text(game.turns);
-    } else {
-      console.log('Error');
-    }
-  });
-  $('#6').on('click', function() {
-    if ($('#6').html() === '') {
-      $('#6').text(game.turns);
-    } else {
-      console.log('Error');
-    }
-  });
-  $('#7').on('click', function() {
-    if ($('#7').html() === '') {
-      $('#7').text(game.turns);
-    } else {
-      console.log('Error');
-    }
-  });
-  $('#8').on('click', function() {
-    if ($('#8').html() === '') {
-      $('#8').text(game.turns);
-    } else {
-      console.log('Error');
-    }
-  });
-  $('#9').on('click', function() {
-    if ($('#9').html() === '') {
-      $('#9').text(game.turns);
-    } else {
-      console.log('Error');
-    }
-  });
-  $('#new-game').on('click', function() {
-    $('#board').append(game.resetGame());
-  });
-  game.checkWins();
+
 });
 
 // use require with a reference to bundle the file and use it in this file
@@ -86,4 +18,52 @@ const authEvents = require('./auth/events.js');
 // On document ready
 $(() => {
   authEvents.addHandlers();
+
+  let winCombos = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ];
+
+  let currentPlayer = 'X';
+
+  let players = {
+    'X': [],
+    'O': []
+  };
+
+  $('.container').on('click', ".box:not('.box-X, .box-O')", function(event) {
+    let $box = $(event.currentTarget);
+    $box.addClass('box-' + currentPlayer);
+    let indexBox = $('.container .box').index($box);
+    let currentBox = players[currentPlayer];
+    currentBox.push(indexBox);
+    $.each(winCombos, function(index, combination) {
+      let allBoxes = true;
+      $.each(combination, function(index, box) {
+        if($.inArray(box, currentBox) === -1) {
+          allBoxes = false;
+        }
+      });
+      if (allBoxes === true) {
+        $('.win').text(currentPlayer + ' wins!');
+        console.log(currentPlayer + ' wins!');
+      }
+    });
+    if (currentPlayer === 'X') {
+      currentPlayer = 'O';
+    } else {
+      currentPlayer = 'X';
+    }
+  });
+  $('.new-game').on('click', function() {
+    $('.box').text('');
+    $('.box').removeClass('box-' + currentPlayer);
+    $('.win').text('');
+  });
 });
