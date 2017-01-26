@@ -37,9 +37,9 @@ $(() => {
     'O': []
   };
 
-  $('.container').on('click', ".box:not('.box-X, .box-O')", function(event) {
+  $('.container').on('click', ".box:not('.box-x, .box-o')", function(event) {
     let $box = $(event.currentTarget);
-    $box.addClass('box-' + currentPlayer);
+    $box.addClass('box-' + currentPlayer).text(currentPlayer).off('click');
     let indexBox = $('.container .box').index($box);
     let currentBox = players[currentPlayer];
     currentBox.push(indexBox);
@@ -53,17 +53,19 @@ $(() => {
       if (allBoxes === true) {
         $('.win').text(currentPlayer + ' wins!');
         console.log(currentPlayer + ' wins!');
+        $('.container').off('click');
+
       }
     });
+
     if (currentPlayer === 'X') {
       currentPlayer = 'O';
+
     } else {
       currentPlayer = 'X';
     }
   });
-  $('.new-game').on('click', function() {
-    $('.box').text('');
-    $('.box').removeClass('box-' + currentPlayer);
-    $('.win').text('');
-  });
+  // $('#new-game').on('submit', function() {
+  //
+  // });
 });

@@ -57,7 +57,8 @@ label {
 }
 
 .box {
-  color: #000;
+  color: red;
+  font-size: 50px;
   border-left: 5px solid #000;
   display: block;
   float: left;
@@ -66,10 +67,10 @@ label {
   width: 33.3%;
 }
 
-.box {
+.box::before {
   content: '';
   font-size: 5em;
-  line-height: 0;
+  line-height: 25%;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
@@ -83,10 +84,10 @@ label {
   border-left: 0;
 }
 
-.box-x {
+.box-x::before {
   content: 'X';
 }
 
-.box-o {
+.box-o::before {
   content: 'O';
 }
