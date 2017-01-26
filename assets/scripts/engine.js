@@ -33,8 +33,8 @@ const checkWins = function () {
   board[1] === player2 && board[4] === player2 && board[7] === player2 ||
   board[2] === player2 && board[5] === player2 && board[8] === player2) {
     $('.win').text('Player 2 is the Winner!');
-  } else {
-    $('.win').text('Cats Game!');
+  // } else {
+  //   $('.win').text('Cats Game!');
   }
 };
 
