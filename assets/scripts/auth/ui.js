@@ -1,7 +1,5 @@
 'use strict';
 
-const store = require('../store');
-
 const success = (data) => {
   // handles success
   if (data) {

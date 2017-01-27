@@ -54,17 +54,6 @@ const onSignOut = function (event) {
   ;
 };
 
-const onNewGame = function (event) {
-  event.preventDefault();
-  api.getGames()
-  .then(() => {
-    return store;
-  })
-  .then(ui.newGameSucces)
-  .catch(ui.failure)
-  ;
-};
-
 const addHandlers = () => {
   $('#sign-up').show();
   $('#sign-in').show();
@@ -77,7 +66,6 @@ const addHandlers = () => {
   $('#sign-in').on('submit', onSignIn);
   $('#change-password').on('submit', onChangePassword);
   $('#sign-out').on('submit', onSignOut);
-  $('#new-game').on('submit', onNewGame);
 };
 
 module.exports = {
