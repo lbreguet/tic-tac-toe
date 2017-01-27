@@ -15,13 +15,7 @@ const resetGameBoard = function() {
     $('.box').text('');
     $('.win').text('');
     currentPlayer = player1;
-  } $('.box').on('click', function(event) {
-    if ($(event.target).text() === '') {
-      $(event.target).text(currentPlayer);
-    }
-    turns(event.target.id);
-    console.log(board);
-  });
+  } game();
 };
 
 
@@ -87,15 +81,15 @@ let endGame = function() {
 };
 
 
-$('.box').on('click', function(event) {
-  if ($(event.target).text() === '') {
-    $(event.target).text(currentPlayer);
-  }
-  turns(event.target.id);
-  console.log(board);
-
-});
-
+let game = function(){
+  $('.box').on('click', function(event) {
+    if ($(event.target).text() === '') {
+      $(event.target).text(currentPlayer);
+    }
+    turns(event.target.id);
+    console.log(board);
+  });
+};
 
 
 
@@ -105,5 +99,5 @@ module.exports = {
   resetGameBoard,
   turns,
   endGame,
-
+  game
 };

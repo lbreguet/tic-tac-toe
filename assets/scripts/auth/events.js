@@ -37,8 +37,7 @@ const onChangePassword = function (event) {
   event.preventDefault();
   let data = getFormFields(event.target);
   api.changePassword(data)
-  .then(ui.success)
-  .catch(ui.failure)
+  .then(ui.success)  .catch(ui.failure)
   ;
 };
 
@@ -54,6 +53,14 @@ const onSignOut = function (event) {
   ;
 };
 
+const onCreateGame = function(event) {
+  event.preventDefault();
+  let data = getFormFields(event.target);
+  api.createGame(data)
+  .then(ui.success)
+  .catch(ui.failure);
+};
+
 const addHandlers = () => {
   $('#sign-up').show();
   $('#sign-in').show();
@@ -66,6 +73,7 @@ const addHandlers = () => {
   $('#sign-in').on('submit', onSignIn);
   $('#change-password').on('submit', onChangePassword);
   $('#sign-out').on('submit', onSignOut);
+  $('#new-game').on('click', onCreateGame);
 };
 
 module.exports = {
