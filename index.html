@@ -16,41 +16,39 @@
 <body class="container-fluid">
   <h1>Tic Tac Toe</h1>
 
-  <!-- Single button -->
-
   <nav>
-    <div class="btn-group">
+    <div class="btn-group" id="sign-up">
       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Sign Up <span class="caret"></span>
       </button>
       <div class="dropdown-menu">
-        <form class="auth" id="sign-up">
+        <form class="auth">
           <fieldset>
             <label class="email">
                   Email
                   <input type="text" name="credentials[email]">
-                </label>
+            </label>
 
             <label class="password">
                   Password
                   <input type="password" name="credentials[password]">
-                </label>
+            </label>
 
             <label class="password_confirmation">
                   Password Confirmation
                   <input type="password" name="credentials[password_confirmation]">
-                </label>
+            </label>
             <input type="submit" name="submit" value="Sign up!">
           </fieldset>
         </form>
       </div>
     </div>
-    <div class="btn-group">
+    <div class="btn-group" id="sign-in">
       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Sign In <span class="caret"></span>
       </button>
       <div class="dropdown-menu">
-        <form class="auth" id="sign-in">
+        <form class="auth">
           <fieldset>
             <label class="email">
                 Email
@@ -66,47 +64,22 @@
         </form>
       </div>
     </div>
-
-
-  <!-- <nav class="my-form">
-    <form class="auth" id="sign-up">
-      <fieldset>
-        <legend>Sign up!</legend>
-        <label class="email">
-              Email
-              <input type="text" name="credentials[email]">
-            </label>
-
-        <label class="password">
-              Password
-              <input type="password" name="credentials[password]">
-            </label>
-
-        <label class="password_confirmation">
-              Password Confirmation
-              <input type="password" name="credentials[password_confirmation]">
-            </label>
-
-        <input type="submit" name="submit" value="Sign up!">
-      </fieldset>
-    </form> -->
-
-    <div class="btn-group">
+    <div class="btn-group" id="change-password">
       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Change Password <span class="caret"></span>
       </button>
       <div class="dropdown-menu">
-        <form id="change-password">
+        <form>
           <fieldset>
             <label class="old">
                   Old password
                   <input type="password" name="passwords[old]">
-                </label>
+            </label>
 
             <label class="new">
                   New password
                   <input type="password" name="passwords[new]">
-                </label>
+            </label>
 
             <input type="submit" name="submit" value="Change password!">
           </fieldset>
@@ -126,7 +99,6 @@
   <div id="new-game">
       <button type="button" class="btn btn-default">Start a New Game</button>
   </div>
-
 <h1 class="win"></h1>
   <div class="container" id="board">
     <div class="row">
@@ -145,6 +117,10 @@
       <div class="box" id="8"></div>
     </div>
   </div>
+  <div id="game-log">
+    <button type="submit" class="btn btn-default">Game History</button>
+  </div>
+<h2 class="games-played"></h2>
 </body>
 
 </html>

@@ -15,11 +15,11 @@ const resetGameBoard = function() {
     $('.box').text('');
     $('.win').text('');
     currentPlayer = player1;
-  }
-  $('.box').on('click', function(event) {
+  } $('.box').on('click', function(event) {
     if ($(event.target).text() === '') {
       $(event.target).text(currentPlayer);
-    } turns(event.target.id);
+    }
+    turns(event.target.id);
     console.log(board);
   });
 };
@@ -82,17 +82,6 @@ let turns = function(index) {
   }
 };
 
-
-// let changeTurn = function() {
-//   if(currentPlayer === 'X'){
-//     currentPlayer = 'O';
-//   }else {
-//     currentPlayer = 'X';
-//   }
-// };
-
-
-// let $dude =$('#dude');
 let endGame = function() {
   $('.box').off('click');
 };
@@ -101,34 +90,12 @@ let endGame = function() {
 $('.box').on('click', function(event) {
   if ($(event.target).text() === '') {
     $(event.target).text(currentPlayer);
-    // $(this).addClass(player1);
-
-    // changeTurn();
   }
   turns(event.target.id);
   console.log(board);
 
 });
 
-
-// $('#').on('click', function(){
-//   if($('#').text()===''){
-//     $('#').text(player1 || player2);
-//   }
-// });
-
-
-
-// $('#side').on('click', function(){
-//   const $cell = $('#' + this.id);
-//     const indx = parseInt($cell.attr('id').slice(1));
-//       $('#${indx}').html('X');
-// })
-
-// const gameShow =
-//   $('#side1').on('click', function(){
-//     alert('1');
-//   });
 
 
 

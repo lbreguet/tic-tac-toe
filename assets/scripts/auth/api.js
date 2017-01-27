@@ -42,9 +42,46 @@ const signOut = function () {
   });
 };
 
+// GETS FULL LIST OF GAMES FOR USER
+const getGames = function () {
+  return $.ajax({
+    url: `${config.apiOrigin}/games`,
+    method: 'GET',
+    headers: {
+      Authorization: `Token token=${store.user.token}`,
+    },
+  });
+};
+
+// STARTS A NEW GAME FOR USER
+const createGames = function () {
+  return $.ajax({
+    url: `${config.apiOrigin}/games`,
+    method: 'POST',
+    headers: {
+      Authorization: `Token token=${store.user.token}`,
+    },
+  });
+};
+
+// SAVES GAMES FOR USER
+const saveGames = function (data) {
+  return $.ajax({
+    url: `${config.apiOrigin}/games/21331`,
+    method: 'PATCH',
+    headers: {
+      Authorization: `Token token=${store.user.token}`,
+    },
+    data,
+  });
+};
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
   signOut,
+  getGames,
+  createGames,
+  saveGames
 };

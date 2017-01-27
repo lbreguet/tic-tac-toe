@@ -13,7 +13,7 @@ const onSignUp = function (event) {
   let data = getFormFields(event.target);
 
   api.signUp(data)
-  .then(ui.success)
+  .then(ui.signUpSuccess)
   .catch(ui.failure)
   ;
 };
@@ -28,7 +28,7 @@ const onSignIn = function (event) {
     store.user = response.user;
     return store;
   })
-  .then(ui.success)
+  .then(ui.signInSuccess)
   .catch(ui.failure)
   ;
 };
@@ -49,16 +49,35 @@ const onSignOut = function (event) {
     delete store.user;
     return store;
   })
-  .then(ui.success)
+  .then(ui.signOutSuccess)
+  .catch(ui.failure)
+  ;
+};
+
+const onNewGame = function (event) {
+  event.preventDefault();
+  api.getGames()
+  .then(() => {
+    return store;
+  })
+  .then(ui.newGameSucces)
   .catch(ui.failure)
   ;
 };
 
 const addHandlers = () => {
+  $('#sign-up').show();
+  $('#sign-in').show();
+  $('#board').hide();
+  $('#new-game').hide();
+  $('#game-log').hide();
+  $('#sign-out').hide();
+  $('#change-password').hide();
   $('#sign-up').on('submit', onSignUp);
   $('#sign-in').on('submit', onSignIn);
   $('#change-password').on('submit', onChangePassword);
   $('#sign-out').on('submit', onSignOut);
+  $('#new-game').on('submit', onNewGame);
 };
 
 module.exports = {
