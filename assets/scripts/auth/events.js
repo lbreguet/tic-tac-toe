@@ -61,6 +61,21 @@ const onCreateGame = function(event) {
   .catch(ui.failure);
 };
 
+const onShowGame = function(event) {
+  event.preventDefault();
+  api.showGame()
+  .then(ui.success)
+  .catch(ui.failure);
+};
+
+const onUpdateGame = function(event) {
+  event.preventDefault();
+  let data = getFormFields(event.target);
+  api.updateGame(data.id, data)
+  .then(ui.success)
+  .catch(ui.failure);
+};
+
 const addHandlers = () => {
   $('#sign-up').show();
   $('#sign-in').show();
@@ -74,6 +89,8 @@ const addHandlers = () => {
   $('#change-password').on('submit', onChangePassword);
   $('#sign-out').on('submit', onSignOut);
   $('#new-game').on('click', onCreateGame);
+  $('.cbtn').on('click', onShowGame);
+  $('.box').on('click', onUpdateGame);
 };
 
 module.exports = {

@@ -42,6 +42,16 @@ const signOut = function () {
   });
 };
 
+const showGame = function() {
+  return $.ajax({
+    url: config.apiOrigin + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    }
+  });
+};
+
 const createGame = function (data) {
   return $.ajax({
     url: config.apiOrigin + '/games',
@@ -53,6 +63,25 @@ const createGame = function (data) {
   });
 };
 
+const updateGame = function(data, id) {
+  return $.ajax({
+    url: config.apiOrigin + '/games/' + id,
+    method: 'PATCH',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    },
+    data: {
+      game: {
+        cell: {
+          index: data.index,
+          value: data.value,
+        },
+        over: data.over,
+      }
+    }
+  });
+};
+
 
 module.exports = {
   signUp,
@@ -60,4 +89,6 @@ module.exports = {
   changePassword,
   signOut,
   createGame,
+  showGame,
+  updateGame
 };
