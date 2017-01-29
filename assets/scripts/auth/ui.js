@@ -7,17 +7,17 @@
 //   }
 // };
 
-// const signUpSuccess = (data) => {
-//
-//   if (data) {
-//     console.log(data);
-//   }
-// };
+const signUpSuccess = () => {
+  $('#sign-up').hide().val('');
+  // if (data) {
+  //   console.log(data);
+  // }
+};
 
 const signInSuccess = () => {
-  $('#sign-up').val('');
+  // $('#sign-up').val('');
   $('#sign-in').val('');
-  $('#sign-up').hide();
+  // $('#sign-up').hide();
   $('#sign-in').hide();
   $('#new-game').show();
   $('#game-log').show();
@@ -68,7 +68,7 @@ const showGameSuccess = (data) => {
 // const
 
 module.exports = {
-  // signUpSuccess,
+  signUpSuccess,
   signInSuccess,
   signOutSuccess,
   // success,

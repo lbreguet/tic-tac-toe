@@ -16,7 +16,6 @@ let endGame = function() {
 
 
 
-
 const checkWins = function() {
   if (
     board[0] === "X" && board[1] === "X" && board[2] === "X" ||
