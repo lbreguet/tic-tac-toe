@@ -2,6 +2,7 @@
 
 const getFormFields = require(`../../../lib/get-form-fields`);
 
+const engine = require('../engine');
 const api = require('./api');
 const ui = require('./ui');
 
@@ -57,24 +58,27 @@ const onCreateGame = function(event) {
   event.preventDefault();
   let data = getFormFields(event.target);
   api.createGame(data)
-  .then(ui.success)
+  .then((response) => {
+    store.game = response.game;
+  })
+  .then(ui.createGameSuccess)
   .catch(ui.failure);
 };
 
 const onShowGame = function(event) {
   event.preventDefault();
   api.showGame()
-  .then(ui.success)
+  .then(ui.showGameSuccess)
   .catch(ui.failure);
 };
 
-const onUpdateGame = function(event) {
-  event.preventDefault();
-  let data = getFormFields(event.target);
-  api.updateGame(data.id, data)
-  .then(ui.success)
-  .catch(ui.failure);
-};
+// const onUpdateGame = function(event) {
+//   event.preventDefault();
+//   // let data = getFormFields(event.target);
+//   api.updateGame(event.target.id, engine.currentPlayer)
+//   .then(ui.success)
+//   .catch(ui.failure);
+// };
 
 const addHandlers = () => {
   $('#sign-up').show();
@@ -90,7 +94,7 @@ const addHandlers = () => {
   $('#sign-out').on('submit', onSignOut);
   $('#new-game').on('click', onCreateGame);
   $('.cbtn').on('click', onShowGame);
-  $('.box').on('click', onUpdateGame);
+  // $('.box').on('click', onUpdateGame);
 };
 
 module.exports = {

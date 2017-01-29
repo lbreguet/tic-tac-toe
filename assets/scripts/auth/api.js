@@ -63,9 +63,9 @@ const createGame = function (data) {
   });
 };
 
-const updateGame = function(data, id) {
+const updateGame = function(index, currentPlayer, status) {
   return $.ajax({
-    url: config.apiOrigin + '/games/' + id,
+    url: `${config.apiOrigin}/games/${store.game.id}`,
     method: 'PATCH',
     headers: {
       Authorization: `Token token=${store.user.token}`
@@ -73,10 +73,10 @@ const updateGame = function(data, id) {
     data: {
       game: {
         cell: {
-          index: data.index,
-          value: data.value,
+          index: index,
+          value: currentPlayer
         },
-        over: data.over,
+        over: status
       }
     }
   });

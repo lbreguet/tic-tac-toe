@@ -1,11 +1,13 @@
 'use strict';
 
+const api = require('./auth/api');
+
 const board = ['', '', '', '', '', '', '', '', ''];
 
-let player1 = 'X';
-let player2 = 'O';
+// const player1 = 'X';
+// const player2 = 'O';
 
-let currentPlayer = player1;
+let currentPlayer = "X";
 
 
 
@@ -14,7 +16,7 @@ const resetGameBoard = function() {
     board[i] = '';
     $('.box').text('');
     $('.win').text('');
-    currentPlayer = player1;
+    currentPlayer = "X";
   } game();
 };
 
@@ -25,50 +27,55 @@ $('#new-game').on('click', function() {
 
 const checkWins = function() {
   if (
-    board[0] === player1 && board[1] === player1 && board[2] === player1 ||
-    board[3] === player1 && board[4] === player1 && board[5] === player1 ||
-    board[6] === player1 && board[7] === player1 && board[8] === player1 ||
-    board[0] === player1 && board[4] === player1 && board[8] === player1 ||
-    board[2] === player1 && board[4] === player1 && board[6] === player1 ||
-    board[0] === player1 && board[3] === player1 && board[6] === player1 ||
-    board[1] === player1 && board[4] === player1 && board[7] === player1 ||
-    board[2] === player1 && board[5] === player1 && board[8] === player1
+    board[0] === "X" && board[1] === "X" && board[2] === "X" ||
+    board[3] === "X" && board[4] === "X" && board[5] === "X" ||
+    board[6] === "X" && board[7] === "X" && board[8] === "X" ||
+    board[0] === "X" && board[4] === "X" && board[8] === "X" ||
+    board[2] === "X" && board[4] === "X" && board[6] === "X" ||
+    board[0] === "X" && board[3] === "X" && board[6] === "X" ||
+    board[1] === "X" && board[4] === "X" && board[7] === "X" ||
+    board[2] === "X" && board[5] === "X" && board[8] === "X"
   ) {
     $('.win').text("Player 1 Won!");
     console.log('Player 1 Won!');
     endGame();
+    return true;
   } else if (
-    board[0] === player2 && board[1] === player2 && board[2] === player2 ||
-    board[3] === player2 && board[4] === player2 && board[5] === player2 ||
-    board[6] === player2 && board[7] === player2 && board[8] === player2 ||
-    board[0] === player2 && board[4] === player2 && board[8] === player2 ||
-    board[2] === player2 && board[4] === player2 && board[6] === player2 ||
-    board[0] === player2 && board[3] === player2 && board[6] === player2 ||
-    board[1] === player2 && board[4] === player2 && board[7] === player2 ||
-    board[2] === player2 && board[5] === player2 && board[8] === player2
+    board[0] === 'O' && board[1] === 'O' && board[2] === 'O' ||
+    board[3] === 'O' && board[4] === 'O' && board[5] === 'O' ||
+    board[6] === 'O' && board[7] === 'O' && board[8] === 'O' ||
+    board[0] === 'O' && board[4] === 'O' && board[8] === 'O' ||
+    board[2] === 'O' && board[4] === 'O' && board[6] === 'O' ||
+    board[0] === 'O' && board[3] === 'O' && board[6] === 'O' ||
+    board[1] === 'O' && board[4] === 'O' && board[7] === 'O' ||
+    board[2] === 'O' && board[5] === 'O' && board[8] === 'O'
   ) {
     $('.win').text("Player 2 Won!");
     console.log('Player 2 Won!');
     endGame();
+    return true;
   } else if (board.includes('') === false) {
     $('.win').text("Cats Game!");
     console.log('Cats Game!');
     endGame();
+    return true;
   }
 };
 
 let message = "Cell is already taken! Pick another one!";
-
+let over = false;
 // let count = 0;
 let turns = function(index) {
   if (board[index] === '') {
     board[index] = currentPlayer;
-    checkWins();
-    if (currentPlayer === player1) {
-      currentPlayer = player2;
+    over = checkWins();
+    api.updateGame(index, currentPlayer, over);
+
+    if (currentPlayer === "X") {
+      currentPlayer = 'O';
       // checkWins();
-    } else if (currentPlayer === player2){
-      currentPlayer = player1;
+    } else if (currentPlayer === 'O'){
+      currentPlayer = "X";
       // checkWins();
     } else {
       $('.win').text(message);
@@ -86,8 +93,9 @@ let game = function(){
     if ($(event.target).text() === '') {
       $(event.target).text(currentPlayer);
     }
-    turns(event.target.id);
+    turns(parseInt(event.target.id));
     console.log(board);
+
   });
 };
 
@@ -99,5 +107,6 @@ module.exports = {
   resetGameBoard,
   turns,
   endGame,
-  game
+  game,
+  currentPlayer
 };

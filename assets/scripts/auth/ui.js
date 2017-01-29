@@ -23,7 +23,7 @@ const signInSuccess = (data) => {
   $('#game-log').show();
   $('#change-password').show();
   $('#sign-out').show();
-  $('#board').show();
+  // $('#board').show();
   if (data) {
     console.log(data);
   }
@@ -35,8 +35,25 @@ const signOutSuccess = (data) => {
   $('#new-game').hide();
   $('#game-log').hide();
   $('#board').hide();
+  $('.games-played').hide().val('');
   $('#sign-in').show();
   $('#sign-up').show();
+  if (data) {
+    console.log(data);
+  }
+};
+
+const createGameSuccess = (data) => {
+  $('#board').show();
+  $('.games-played').hide();
+  if (data) {
+    console.log(data);
+  }
+};
+
+const showGameSuccess = (data) => {
+  $('.games-played').show();
+  $('.games-played').text('You\'ve played ' + data.games.length + ' times!');
   if (data) {
     console.log(data);
   }
@@ -55,4 +72,6 @@ module.exports = {
   signOutSuccess,
   success,
   failure,
+  createGameSuccess,
+  showGameSuccess
 };
