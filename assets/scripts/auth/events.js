@@ -2,7 +2,7 @@
 
 const getFormFields = require(`../../../lib/get-form-fields`);
 
-const engine = require('../engine');
+
 const api = require('./api');
 const ui = require('./ui');
 
@@ -14,8 +14,8 @@ const onSignUp = function (event) {
   let data = getFormFields(event.target);
 
   api.signUp(data)
-  .then(ui.signUpSuccess)
-  .catch(ui.failure)
+  // .then(ui.signUpSuccess)
+  // .catch(ui.failure)
   ;
 };
 
@@ -30,7 +30,7 @@ const onSignIn = function (event) {
     return store;
   })
   .then(ui.signInSuccess)
-  .catch(ui.failure)
+  // .catch(ui.failure)
   ;
 };
 
@@ -38,7 +38,7 @@ const onChangePassword = function (event) {
   event.preventDefault();
   let data = getFormFields(event.target);
   api.changePassword(data)
-  .then(ui.success)  .catch(ui.failure)
+  // .then(ui.success)  .catch(ui.failure)
   ;
 };
 
@@ -50,7 +50,7 @@ const onSignOut = function (event) {
     return store;
   })
   .then(ui.signOutSuccess)
-  .catch(ui.failure)
+  // .catch(ui.failure)
   ;
 };
 
@@ -62,14 +62,16 @@ const onCreateGame = function(event) {
     store.game = response.game;
   })
   .then(ui.createGameSuccess)
-  .catch(ui.failure);
+  // .catch(ui.failure)
+  ;
 };
 
 const onShowGame = function(event) {
   event.preventDefault();
   api.showGame()
   .then(ui.showGameSuccess)
-  .catch(ui.failure);
+  // .catch(ui.failure)
+  ;
 };
 
 // const onUpdateGame = function(event) {

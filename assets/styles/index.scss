@@ -2,8 +2,8 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
 body {
- text-align: center;
- background: white;
+  background: white;
+  text-align: center;
 }
 
 h1 {
@@ -19,8 +19,8 @@ legend {
 
 
 label {
-  font-size: 10px;
   float: left;
+  font-size: 10px;
 }
 
 

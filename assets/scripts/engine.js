@@ -10,20 +10,12 @@ const board = ['', '', '', '', '', '', '', '', ''];
 let currentPlayer = "X";
 
 
-
-const resetGameBoard = function() {
-  for (let i = 0; i < board.length; i++) {
-    board[i] = '';
-    $('.box').text('');
-    $('.win').text('');
-    currentPlayer = "X";
-  } game();
+let endGame = function() {
+  $('.box').off('click');
 };
 
 
-$('#new-game').on('click', function() {
-  resetGameBoard();
-});
+
 
 const checkWins = function() {
   if (
@@ -37,7 +29,7 @@ const checkWins = function() {
     board[2] === "X" && board[5] === "X" && board[8] === "X"
   ) {
     $('.win').text("Player 1 Won!");
-    console.log('Player 1 Won!');
+    // console.log('Player 1 Won!');
     endGame();
     return true;
   } else if (
@@ -51,18 +43,18 @@ const checkWins = function() {
     board[2] === 'O' && board[5] === 'O' && board[8] === 'O'
   ) {
     $('.win').text("Player 2 Won!");
-    console.log('Player 2 Won!');
+    // console.log('Player 2 Won!');
     endGame();
     return true;
   } else if (board.includes('') === false) {
     $('.win').text("Cats Game!");
-    console.log('Cats Game!');
+    // console.log('Cats Game!');
     endGame();
     return true;
   }
 };
 
-let message = "Cell is already taken! Pick another one!";
+// let message = "Cell is already taken! Pick another one!";
 let over = false;
 // let count = 0;
 let turns = function(index) {
@@ -77,16 +69,9 @@ let turns = function(index) {
     } else if (currentPlayer === 'O'){
       currentPlayer = "X";
       // checkWins();
-    } else {
-      $('.win').text(message);
     }
   }
 };
-
-let endGame = function() {
-  $('.box').off('click');
-};
-
 
 let game = function(){
   $('.box').on('click', function(event) {
@@ -94,11 +79,26 @@ let game = function(){
       $(event.target).text(currentPlayer);
     }
     turns(parseInt(event.target.id));
-    console.log(board);
+    // console.log(board);
 
   });
 };
 
+
+
+const resetGameBoard = function() {
+  for (let i = 0; i < board.length; i++) {
+    board[i] = '';
+    $('.box').text('');
+    $('.win').text('');
+    currentPlayer = "X";
+  } game();
+};
+
+
+$('#new-game').on('click', function() {
+  resetGameBoard();
+});
 
 
 module.exports = {
