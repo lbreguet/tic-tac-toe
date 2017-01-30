@@ -15,9 +15,9 @@ const signUpSuccess = () => {
 };
 
 const signInSuccess = () => {
-  // $('#sign-up').val('');
+  $('#sign-up').val('');
   $('#sign-in').val('');
-  // $('#sign-up').hide();
+  $('#sign-up').hide();
   $('#sign-in').hide();
   $('#new-game').show();
   $('#game-log').show();
