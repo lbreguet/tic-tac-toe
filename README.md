@@ -36,7 +36,7 @@ game is counted towards it, regardless of whether it was completed or not. It's
 a minor issue, but an issue none the less.
 
 ## Wireframe
-(https://github.com/lbreguet/tic-tac-toe/blob/master/wireframe.JPG)
+![alt text](https://github.com/lbreguet/tic-tac-toe/blob/master/wireframe.JPG "Wireframe")
 
 ## User Stories
 1. I'm a user who wants to beat others at Tic Tac Toe.
