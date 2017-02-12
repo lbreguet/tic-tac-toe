@@ -16,6 +16,7 @@ const signUpSuccess = () => {
 
 const signInSuccess = () => {
   $('#sign-up').val('');
+  $('.win').show();
   $('#sign-in').val('');
   $('#sign-up').hide();
   $('#sign-in').hide();
