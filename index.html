@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Tic Tac Toe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags unless you know what you are doing -->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags unless you know what you are doing -->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body class="container-fluid">
+  <h1>Tic Tac Toe</h1>
+
+  <nav>
+    <div class="btn-group" id="sign-up">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sign Up
+      </button>
+      <div class="dropdown-menu">
+        <form class="auth">
+          <fieldset>
+            <label class="email">
+                  Email
+                  <input class="email-input" type="text" name="credentials[email]">
+            </label>
+
+            <label class="password">
+                  Password
+                  <input class="password-input" type="password" name="credentials[password]">
+            </label>
+
+            <label class="password_confirmation">
+                  Password Confirmation
+                  <input class="password-input" type="password" name="credentials[password_confirmation]">
+            </label>
+            <input type="submit" name="submit" value="Sign up!">
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <div class="btn-group" id="sign-in">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sign In
+      </button>
+      <div class="dropdown-menu">
+        <form class="auth">
+          <fieldset>
+            <label class="email">
+                Email
+              <input class="email-input" type="text" name="credentials[email]">
+            </label>
+
+            <label class="password">
+                Password
+              <input class="password-input" type="password" name="credentials[password]">
+            </label>
+            <input type="submit" name="submit" value="Sign in!">
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <div class="btn-group" id="change-password">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Change Password
+      </button>
+      <div class="dropdown-menu">
+        <form>
+          <fieldset>
+            <label class="old">
+                  Old password
+                  <input class="old-password" type="password" name="passwords[old]">
+            </label>
+
+            <label class="new">
+                  New password
+                  <input class="new-password" type="password" name="passwords[new]">
+            </label>
+
+            <input type="submit" name="submit" value="Change password!">
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+    <div class="btn-group" role="group" aria-label="...">
+      <form id="sign-out">
+        <fieldset>
+          <button type="submit" class="btn btn-default">Sign Out</button>
+        </fieldset>
+      </form>
+    </div>
+  </nav>
+
+  <div id="new-game">
+      <button type="button" class="btn btn-default">Start a New Game</button>
+  </div>
+<h1 class="win"></h1>
+  <div class="container" id="board">
+    <div class="row">
+      <div class="box" id="0"></div>
+      <div class="box" id="1"></div>
+      <div class="box" id="2"></div>
+    </div>
+    <div class="row">
+      <div class="box" id="3"></div>
+      <div class="box" id="4"></div>
+      <div class="box" id="5"></div>
+    </div>
+    <div class="row">
+      <div class="box" id="6"></div>
+      <div class="box" id="7"></div>
+      <div class="box" id="8"></div>
+    </div>
+  </div>
+  <h1 class="games-played"></h1>
+  <div>
+    <form id="game-log">
+      <button type="button" class="btn btn-default cbtn">Game History</button>
+    </form>
+  </div>
+</body>
+
+</html>
