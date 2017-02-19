@@ -8,17 +8,19 @@
 // };
 
 const signUpSuccess = () => {
-  $('#sign-up').hide().val('');
+  $('#sign-up').hide();
+  $('.email-input').val('');
+  $('.password-input').val('');
   // if (data) {
   //   console.log(data);
   // }
 };
 
 const signInSuccess = () => {
-  $('#sign-up').val('');
+  $('.email-input').val('');
+  $('.password-input').val('');
   $('.win').show();
-  $('#sign-in').val('');
-  $('#sign-up').hide();
+  $('#sign-up').show().hide();
   $('#sign-in').hide();
   $('#new-game').show();
   $('#game-log').show();
@@ -28,6 +30,11 @@ const signInSuccess = () => {
   // if (data) {
   //   console.log(data);
   // }
+};
+
+const changePasswordSuccess = () => {
+  $('.old-password').val('');
+  $('.new-password').val('');
 };
 
 const signOutSuccess = () => {
@@ -73,6 +80,7 @@ module.exports = {
   signInSuccess,
   signOutSuccess,
   // success,
+  changePasswordSuccess,
   // failure,
   createGameSuccess,
   showGameSuccess
